@@ -35,13 +35,15 @@ class ViewController: UIViewController {
     private func setUpAStory() {
         
         setup()
-        changeIndex()
+      
         
         if firstChoiceButton.isSelected {
+           changeIndex()
             storyLabel.text = stories[firstStoryNumber]
         }
         
         else {
+           changeIndex()
             storyLabel.text = stories[secondStoryNumber]
         }
         
@@ -68,7 +70,10 @@ class ViewController: UIViewController {
             firstStoryNumber = 0
             secondStoryNumber = 1
         }
-    
+        else if storyLabel.text == "" {
+            firstStoryNumber = 0
+            secondStoryNumber = 1
+        }
     }
     
 }
