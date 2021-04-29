@@ -35,25 +35,7 @@ class ViewController: UIViewController {
   
     }
     
-//   private func createADictionary ()  -> [String: String] {
-//
-//    var dict: [String: String] = [:]
-//
-//        for storyChoice in 0...storyFormatChoices.count-1 {
-//
-//            for storyName in 0...storyNamesArray.count-1 {
-//
-//                let endOfAStory = storyFormatChoices[storyChoice]
-//                let story = storyNamesArray[storyName]
-//
-//                if  endOfAStory == story {
-//                    dict.updateValue(endOfAStory, forKey: story)
-//                }
-//            }
-//        }
-//   return dict
-//
-//   }
+
     private func setUpAStory() {
         
      
