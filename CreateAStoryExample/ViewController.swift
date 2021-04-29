@@ -14,7 +14,6 @@ class ViewController: UIViewController {
     private var firstStoryNumber = 0
     private var secondStoryNumber = 1
     
-    
     @IBOutlet weak var storyLabel: UILabel!
     
     @IBOutlet weak var firstChoiceButton: UIButton!
@@ -67,12 +66,15 @@ class ViewController: UIViewController {
             secondStoryNumber = firstStoryNumber + 1
             
         }
+     
         else if firstStoryNumber == stories.count - 2 && secondStoryNumber == stories.count - 1 && (storyLabel.text == stories[firstStoryNumber] || storyLabel.text == stories[secondStoryNumber]) && (firstChoiceButton.isSelected || secondChoiceButton.isSelected) {
             
             firstStoryNumber = 0
             secondStoryNumber = 1
         }
+      
         else if storyLabel.text == "" {
+           
             firstStoryNumber = 0
             secondStoryNumber = 1
         }
