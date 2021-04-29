@@ -22,6 +22,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var secondChoiceButton: UIButton!
     
     @IBAction func chooseAStoryAction(_ sender: UIButton) {
+       
         setUpAStory()
         sender.isSelected = !sender.isSelected
     }
