@@ -25,42 +25,37 @@ class ViewController: UIViewController {
         setUpAStory()
         sender.isSelected = !sender.isSelected
     }
-    
-    
-    
-    
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-    }
-    
-    
+
+
     private func setUpAStory() {
         
-        
-        if firstChoiceButton.isSelected && firstStoryNumber <= 3 || firstStoryNumber == 0{
+        if firstChoiceButton.isSelected && firstStoryNumber < storyNamesArray.count-1 && storyNamesArray[firstStoryNumber] == storyFormatChoices[firstStoryNumber]{
             
             storyLabel.text = storyNamesArray[firstStoryNumber]
             
             firstChoiceButton.setTitle(storyFormatChoices[firstStoryNumber], for: .selected)
             secondChoiceButton.setTitle(storyFormatChoices[secondStoryNumber], for: .selected)
-            
-            
         }
         
-        else if secondChoiceButton.isSelected && secondStoryNumber <= 4 || secondStoryNumber == 1 {
-            secondStoryNumber += 1
+        else if secondChoiceButton.isSelected && secondStoryNumber < storyNamesArray.count && secondStoryNumber > firstStoryNumber && storyNamesArray[secondStoryNumber] == storyFormatChoices[secondStoryNumber] {
+            
+        
             storyLabel.text = storyNamesArray[secondStoryNumber]
+            
             firstChoiceButton.setTitle(storyFormatChoices[firstStoryNumber], for: .selected)
             secondChoiceButton.setTitle(storyFormatChoices[secondStoryNumber], for: .selected)
         }
         
-        else if  firstStoryNumber >= 5 || secondStoryNumber >= 6{
+        else {
             
-            firstChoiceButton.setTitle("Choice A", for: .normal)
-            secondChoiceButton.setTitle("Choice B", for: .normal)
             storyLabel.text = ""
+            firstStoryNumber = 0
+            secondStoryNumber = 1
+            
+            firstChoiceButton.setTitle(storyFormatChoices[firstStoryNumber], for: .selected)
+            secondChoiceButton.setTitle(storyFormatChoices[secondStoryNumber], for: .selected)
+            
+           
             
         }
         
@@ -69,7 +64,6 @@ class ViewController: UIViewController {
         
         
     }
-    
     
 }
 
