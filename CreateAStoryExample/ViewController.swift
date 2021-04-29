@@ -30,44 +30,15 @@ class ViewController: UIViewController {
 
     private func setUpAStory() {
         
-        if firstChoiceButton.isSelected && firstStoryNumber < storyNamesArray.count-1 {
-            
-            storyLabel.text = storyNamesArray[firstStoryNumber]
-            
-            firstChoiceButton.setTitle(storyFormatChoices[firstStoryNumber], for: .selected)
-            secondChoiceButton.setTitle(storyFormatChoices[secondStoryNumber], for: .selected)
-        }
-        
-        else if secondChoiceButton.isSelected && secondStoryNumber < storyNamesArray.count && secondStoryNumber > firstStoryNumber {
-            
-        
-            storyLabel.text = storyNamesArray[secondStoryNumber]
-            
-            firstChoiceButton.setTitle(storyFormatChoices[firstStoryNumber], for: .selected)
-            secondChoiceButton.setTitle(storyFormatChoices[secondStoryNumber], for: .selected)
-        }
-        
-        else {
-            
-            storyLabel.text = ""
-            firstStoryNumber = 0
-            secondStoryNumber = 1
-            
-            firstChoiceButton.setTitle(storyFormatChoices[firstStoryNumber], for: .selected)
-            secondChoiceButton.setTitle(storyFormatChoices[secondStoryNumber], for: .selected)
-            
-           
-            
-        }
-        
-        firstStoryNumber = secondStoryNumber + 1
-        secondStoryNumber = firstStoryNumber + 1
-        
-        
-    }
+       
     
 }
 
+    private func setup () {
+       
+        if firstChoiceButton.isSelected || secondChoiceButton.isSelected {
+            firstChoiceButton.setTitle(<#T##title: String?##String?#>, for: <#T##UIControl.State#>)
+        }
+    }
 
-
-
+}
