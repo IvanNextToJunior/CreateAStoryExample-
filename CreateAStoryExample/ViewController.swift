@@ -11,8 +11,8 @@ import UIKit
 class ViewController: UIViewController {
     
     ///Индексы для словаря
-    private var firstStoryNumber = 0
-    private var secondStoryNumber = 1
+    private var firstStoryNumber = Int()
+    private var secondStoryNumber = Int()
     
     @IBOutlet weak var storyLabel: UILabel!
     
@@ -22,58 +22,55 @@ class ViewController: UIViewController {
     
     @IBAction func chooseAStoryAction(_ sender: UIButton) {
         
-        setUpAStory()
-        sender.isSelected = !sender.isSelected
+       
+    setUpAStory()
+    
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        firstChoiceButton.setTitle(choicesInTheStory[0], for: .normal)
+        secondChoiceButton.setTitle(choicesInTheStory[1], for: .normal)
         storyLabel.text = ""
     }
     
     private func setUpAStory() {
-        
-           setup()
-           changeIndex()
-        
+           
         if firstChoiceButton.isSelected {
+          
             storyLabel.text = stories[firstStoryNumber]
+            changeButtonTitle()
         }
         
         else {
+          
             storyLabel.text = stories[secondStoryNumber]
+        changeButtonTitle()
         }
         
     }
     
-    private func setup () {
+    private func changeButtonTitle () {
+      
+        firstStoryNumber = 0
+        secondStoryNumber = 1
         
-        firstChoiceButton.setTitle(choicesInTheStory[firstStoryNumber], for: .selected)
-        
-        secondChoiceButton.setTitle(choicesInTheStory[secondStoryNumber], for: .selected)
-        
-    }
-    
-    private func changeIndex () {
-        
-        if storyLabel.text != "" && firstStoryNumber < stories.count && secondStoryNumber < stories.count && firstStoryNumber != secondStoryNumber {
+        if firstStoryNumber < stories.count, secondStoryNumber < stories.count, firstStoryNumber < secondStoryNumber {
             
             firstStoryNumber = secondStoryNumber + 1
-            secondStoryNumber = firstStoryNumber + 1
-            
+           secondStoryNumber = firstStoryNumber + 1
         }
-     
-        else if (storyLabel.text == stories[firstStoryNumber] || storyLabel.text == stories[secondStoryNumber]) && (firstChoiceButton.isSelected || secondChoiceButton.isSelected) {
+        
+        else {
             
             firstStoryNumber = 0
-            secondStoryNumber = 1
+        secondStoryNumber = 1
         }
+        
+        firstChoiceButton.setTitle(choicesInTheStory[firstStoryNumber], for: .normal)
       
-        else if storyLabel.text == "" {
-           
-            firstStoryNumber = 0
-            secondStoryNumber = 1
-        }
+        secondChoiceButton.setTitle(choicesInTheStory[secondStoryNumber], for: .normal)
     }
     
 }
