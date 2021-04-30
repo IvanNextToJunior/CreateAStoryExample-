@@ -22,9 +22,9 @@ class ViewController: UIViewController {
     
     @IBAction func chooseAStoryAction(_ sender: UIButton) {
         
-       
-    setUpAStory()
-    
+        
+        setUpAStory()
+        sender.isSelected = !sender.isSelected
     }
     
     override func viewDidLoad() {
@@ -36,40 +36,40 @@ class ViewController: UIViewController {
     }
     
     private func setUpAStory() {
-           
+        
         if firstChoiceButton.isSelected {
-          
+            
             storyLabel.text = stories[firstStoryNumber]
-            changeButtonTitle()
         }
         
         else {
-          
+            
             storyLabel.text = stories[secondStoryNumber]
-        changeButtonTitle()
         }
+        
+        changeButtonTitle()
         
     }
     
     private func changeButtonTitle () {
-      
+        
         firstStoryNumber = 0
         secondStoryNumber = 1
         
         if firstStoryNumber < stories.count, secondStoryNumber < stories.count, firstStoryNumber < secondStoryNumber {
             
             firstStoryNumber = secondStoryNumber + 1
-           secondStoryNumber = firstStoryNumber + 1
+            secondStoryNumber = firstStoryNumber + 1
         }
         
         else {
             
             firstStoryNumber = 0
-        secondStoryNumber = 1
+            secondStoryNumber = 1
         }
         
         firstChoiceButton.setTitle(choicesInTheStory[firstStoryNumber], for: .normal)
-      
+        
         secondChoiceButton.setTitle(choicesInTheStory[secondStoryNumber], for: .normal)
     }
     
