@@ -33,18 +33,14 @@ class ViewController: UIViewController {
     
     private func setUpAStory() {
         
-        setup()
-        
+           setup()
+           changeIndex()
         
         if firstChoiceButton.isSelected {
-           
-            changeIndex()
             storyLabel.text = stories[firstStoryNumber]
         }
         
         else {
-          
-            changeIndex()
             storyLabel.text = stories[secondStoryNumber]
         }
         
@@ -52,9 +48,9 @@ class ViewController: UIViewController {
     
     private func setup () {
         
-        firstChoiceButton.setTitle(choicesInTheStory[firstStoryNumber], for: .normal)
+        firstChoiceButton.setTitle(choicesInTheStory[firstStoryNumber], for: .selected)
         
-        secondChoiceButton.setTitle(choicesInTheStory[secondStoryNumber], for: .normal)
+        secondChoiceButton.setTitle(choicesInTheStory[secondStoryNumber], for: .selected)
         
     }
     
@@ -67,7 +63,7 @@ class ViewController: UIViewController {
             
         }
      
-        else if firstStoryNumber == stories.count - 2 && secondStoryNumber == stories.count - 1 && (storyLabel.text == stories[firstStoryNumber] || storyLabel.text == stories[secondStoryNumber]) && (firstChoiceButton.isSelected || secondChoiceButton.isSelected) {
+        else if (storyLabel.text == stories[firstStoryNumber] || storyLabel.text == stories[secondStoryNumber]) && (firstChoiceButton.isSelected || secondChoiceButton.isSelected) {
             
             firstStoryNumber = 0
             secondStoryNumber = 1
