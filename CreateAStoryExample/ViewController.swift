@@ -34,21 +34,20 @@ class ViewController: UIViewController {
     }
     
     private func setUpAStory() {
-        
+     
+        storyLabel.text = firstChoiceButton.isEnabled ? stories[firstStoryNumber] : stories[secondStoryNumber]
+      
+        if (firstStoryNumber == choicesInTheStory.count - 2 || secondStoryNumber == choicesInTheStory.count - 1) && (storyLabel.text == stories[firstStoryNumber] || storyLabel.text == stories[secondStoryNumber]) {
+          
+            firstStoryNumber = 0
+            secondStoryNumber = 1
+        }
+       
         firstStoryNumber = secondStoryNumber + 1
         secondStoryNumber = firstStoryNumber + 1
        
         firstChoiceButton.setTitle(choicesInTheStory[firstStoryNumber], for: .normal)
         secondChoiceButton.setTitle(choicesInTheStory[secondStoryNumber], for: .normal)
-        
-        storyLabel.text = firstChoiceButton.isEnabled ? stories[firstStoryNumber] : stories[secondStoryNumber]
-        
-        if (firstStoryNumber == choicesInTheStory.count - 2 || secondStoryNumber == choicesInTheStory.count) && (storyLabel.text == stories[firstStoryNumber] || storyLabel.text == stories[secondStoryNumber]) {
-          
-            firstStoryNumber = 0
-            secondStoryNumber = 1
-        }
-        
     }
     
 }
