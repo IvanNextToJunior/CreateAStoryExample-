@@ -27,41 +27,28 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+       
+        firstChoiceButton.setTitle(choicesInTheStory[0], for: .normal)
+        secondChoiceButton.setTitle(choicesInTheStory[1], for: .normal)
         storyLabel.text = "Story"
     }
     
     private func setUpAStory() {
         
-        
-        if firstChoiceButton.isSelected {
-           
-            firstChoiceButton.setTitle(choicesInTheStory[firstStoryNumber], for: .normal)
-            secondChoiceButton.setTitle(choicesInTheStory[secondStoryNumber], for: .normal)
-            
-            storyLabel.text = stories[firstStoryNumber]
-        
-        }
-        
-      else if secondChoiceButton.isSelected {
-       
-        secondChoiceButton.setTitle(choicesInTheStory[secondStoryNumber], for: .normal)
-        firstChoiceButton.setTitle(choicesInTheStory[firstStoryNumber], for: .normal)
-        
-        storyLabel.text = stories[secondStoryNumber]
-        
-      }
         firstStoryNumber = secondStoryNumber + 1
-            secondStoryNumber = firstStoryNumber + 1
-      
-      
-        if secondStoryNumber == choicesInTheStory.count - 1 && (secondChoiceButton.isSelected || firstChoiceButton.isSelected) {
-           
+        secondStoryNumber = firstStoryNumber + 1
+       
+        firstChoiceButton.setTitle(choicesInTheStory[firstStoryNumber], for: .normal)
+        secondChoiceButton.setTitle(choicesInTheStory[secondStoryNumber], for: .normal)
+        
+        storyLabel.text = firstChoiceButton.isEnabled ? stories[firstStoryNumber] : stories[secondStoryNumber]
+        
+        if (firstStoryNumber == choicesInTheStory.count - 2 || secondStoryNumber == choicesInTheStory.count) && (storyLabel.text == stories[firstStoryNumber] || storyLabel.text == stories[secondStoryNumber]) {
+          
             firstStoryNumber = 0
             secondStoryNumber = 1
-            storyLabel.text = firstChoiceButton.isSelected ? stories[firstStoryNumber] : stories[secondStoryNumber]
         }
         
     }
     
-
 }
