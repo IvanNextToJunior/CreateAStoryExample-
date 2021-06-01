@@ -27,32 +27,32 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        storyLabel.text = ""
+        storyLabel.text = "Story"
     }
     
     private func setUpAStory() {
         
-        
         if firstChoiceButton.isSelected {
            
-            firstChoiceButton.setTitle(choicesInTheStory[firstStoryNumber], for: .selected)
+            firstChoiceButton.setTitle(choicesInTheStory[firstStoryNumber], for: .normal)
             secondChoiceButton.setTitle(choicesInTheStory[secondStoryNumber], for: .normal)
             
             storyLabel.text = stories[firstStoryNumber]
-        
+            
+            firstStoryNumber = secondStoryNumber + 1
+                secondStoryNumber = firstStoryNumber + 1
         }
         
       else if secondChoiceButton.isSelected {
        
-        secondChoiceButton.setTitle(choicesInTheStory[secondStoryNumber], for: .selected)
+        secondChoiceButton.setTitle(choicesInTheStory[secondStoryNumber], for: .normal)
         firstChoiceButton.setTitle(choicesInTheStory[firstStoryNumber], for: .normal)
         
         storyLabel.text = stories[secondStoryNumber]
         
-      }
         firstStoryNumber = secondStoryNumber + 1
             secondStoryNumber = firstStoryNumber + 1
-      
+      }
       
         if secondStoryNumber == choicesInTheStory.count - 1 && (secondChoiceButton.isSelected || firstChoiceButton.isSelected) {
            
