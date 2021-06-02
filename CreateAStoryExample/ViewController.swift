@@ -35,7 +35,6 @@ class ViewController: UIViewController {
     }
     
 
-
     private func setUpAStory() {
         
         switch Bool() {
