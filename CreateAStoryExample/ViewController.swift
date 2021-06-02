@@ -39,29 +39,28 @@ class ViewController: UIViewController {
         
         switch Bool() {
         
-        case firstStoryNumber < choicesInTheStory.count - 2, secondStoryNumber < choicesInTheStory.endIndex, firstChoiceButton.isEnabled:
-          
+        case firstStoryNumber < choicesInTheStory.count - 2, secondStoryNumber < choicesInTheStory.endIndex, firstChoiceButton.isSelected :
+           
+            storyLabel.text = stories[firstStoryNumber]
             firstStoryNumber = secondStoryNumber + 1
             secondStoryNumber = firstStoryNumber + 1
-            storyLabel.text = stories[firstStoryNumber]
-            
+           
             firstChoiceButton.setTitle(choicesInTheStory[firstStoryNumber], for: .normal)
             secondChoiceButton.setTitle(choicesInTheStory[secondStoryNumber], for: .normal)
-        
-        case firstStoryNumber < choicesInTheStory.count - 2, secondStoryNumber < choicesInTheStory.endIndex, secondChoiceButton.isEnabled:
+        f
+        case firstStoryNumber < choicesInTheStory.count - 2, secondStoryNumber < choicesInTheStory.endIndex, secondChoiceButton.isSelected:
           
-            firstStoryNumber = secondStoryNumber + 1
-            secondStoryNumber = firstStoryNumber + 1
             storyLabel.text = stories[secondStoryNumber]
+            firstStoryNumber = secondStoryNumber + 1
+            secondStoryNumber = firstStoryNumber + 1
             
             firstChoiceButton.setTitle(choicesInTheStory[firstStoryNumber], for: .normal)
             secondChoiceButton.setTitle(choicesInTheStory[secondStoryNumber], for: .normal)
             
-        case firstStoryNumber == choicesInTheStory.count-2, secondStoryNumber == choicesInTheStory.endIndex, firstChoiceButton.isEnabled:
-            
+        case firstStoryNumber == choicesInTheStory.count-2, secondStoryNumber == choicesInTheStory.endIndex, firstChoiceButton.isSelected:
             storyLabel.text = stories[firstStoryNumber]
             
-        case firstStoryNumber == choicesInTheStory.count-2, secondStoryNumber == choicesInTheStory.endIndex, secondChoiceButton.isEnabled:
+        case firstStoryNumber == choicesInTheStory.count-2, secondStoryNumber == choicesInTheStory.endIndex, secondChoiceButton.isSelected:
             storyLabel.text = stories[secondStoryNumber]
        
         default:
