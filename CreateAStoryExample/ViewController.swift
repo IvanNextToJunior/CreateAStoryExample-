@@ -56,15 +56,16 @@ class ViewController: UIViewController {
             
             firstChoiceButton.setTitle(choicesInTheStory[firstStoryNumber], for: .normal)
             secondChoiceButton.setTitle(choicesInTheStory[secondStoryNumber], for: .normal)
-            
-        case firstStoryNumber == choicesInTheStory.count-2, secondStoryNumber == choicesInTheStory.endIndex, firstChoiceButton.isSelected:
-            storyLabel.text = stories[firstStoryNumber]
-            
-        case firstStoryNumber == choicesInTheStory.count-2, secondStoryNumber == choicesInTheStory.endIndex, secondChoiceButton.isSelected:
-            storyLabel.text = stories[secondStoryNumber]
-       
-        default:
-           break
+          
+        
+      
+        case storyLabel.text == stories[choicesInTheStory.endIndex-1] || storyLabel.text == stories[choicesInTheStory.endIndex], firstChoiceButton.isSelected || secondChoiceButton.isSelected:
+           
+            firstStoryNumber = 0
+            secondStoryNumber = 1
+            firstChoiceButton.setTitle(choicesInTheStory[firstStoryNumber], for: .normal)
+            secondChoiceButton.setTitle(<#T##title: String?##String?#>, for: <#T##UIControl.State#>)
+        
         }
     }
 
