@@ -34,31 +34,40 @@ class ViewController: UIViewController {
         storyLabel.text = "Story"
     }
     
+
+
     private func setUpAStory() {
         
-        storyLabel.text = firstChoiceButton.isEnabled ? stories[firstStoryNumber] : stories[secondStoryNumber]
-       
-        if firstStoryNumber < choicesInTheStory.count - 2, secondStoryNumber < choicesInTheStory.endIndex {
+        switch Bool() {
+        
+        case firstStoryNumber < choicesInTheStory.count - 2, secondStoryNumber < choicesInTheStory.endIndex, firstChoiceButton.isEnabled:
+          
             firstStoryNumber = secondStoryNumber + 1
             secondStoryNumber = firstStoryNumber + 1
-        }
-        else if firstStoryNumber == choicesInTheStory.endIndex-1, secondStoryNumber == choicesInTheStory.endIndex, firstChoiceButton.isEnabled || secondChoiceButton.isEnabled {
+            storyLabel.text = stories[firstStoryNumber]
             
-            storyLabel.text = firstChoiceButton.isEnabled ? stories[firstStoryNumber] : stories[secondStoryNumber]
-            firstStoryNumber = 0
-            secondStoryNumber = 1
+            firstChoiceButton.setTitle(choicesInTheStory[firstStoryNumber], for: .normal)
+            secondChoiceButton.setTitle(choicesInTheStory[secondStoryNumber], for: .normal)
+        
+        case firstStoryNumber < choicesInTheStory.count - 2, secondStoryNumber < choicesInTheStory.endIndex, secondChoiceButton.isEnabled:
+          
+            firstStoryNumber = secondStoryNumber + 1
+            secondStoryNumber = firstStoryNumber + 1
+            storyLabel.text = stories[secondStoryNumber]
+            
+            firstChoiceButton.setTitle(choicesInTheStory[firstStoryNumber], for: .normal)
+            secondChoiceButton.setTitle(choicesInTheStory[secondStoryNumber], for: .normal)
+            
+        case firstStoryNumber == choicesInTheStory.count-2, secondStoryNumber == choicesInTheStory.endIndex, firstChoiceButton.isEnabled:
+            
+            storyLabel.text = stories[firstStoryNumber]
+            
+        case firstStoryNumber == choicesInTheStory.count-2, secondStoryNumber == choicesInTheStory.endIndex, secondChoiceButton.isEnabled:
+            storyLabel.text = stories[secondStoryNumber]
+       
+        default:
+           break
         }
-        else {
-            firstStoryNumber = 0
-            secondStoryNumber = 1
-            storyLabel.text = "The end"
-        }
-        firstChoiceButton.setTitle(choicesInTheStory[firstStoryNumber], for: .normal)
-        secondChoiceButton.setTitle(choicesInTheStory[secondStoryNumber], for: .normal)
-        
-      
-        
-        
-        
     }
+
 }
