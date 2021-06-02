@@ -7,6 +7,9 @@
 
 import Foundation
 
+class Constants {
+    
 let stories = ["Jungle book", "Once upon a time", "Perks of Being a Walflower", "Blue Lagoon", "Spider Man", "Iron Man"]
 
 let storyOptions = ["Listen to Jungle Book", "Listen to Once upon a time", "Listen to Perks of being a Walflower", "Read Blue Lagoon", "Read Spider Man","Watch Iron Man"]
+}
