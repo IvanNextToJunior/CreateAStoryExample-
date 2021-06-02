@@ -47,7 +47,7 @@ class ViewController: UIViewController {
            
             firstChoiceButton.setTitle(choicesInTheStory[firstStoryNumber], for: .normal)
             secondChoiceButton.setTitle(choicesInTheStory[secondStoryNumber], for: .normal)
-        f
+        
         case firstStoryNumber < choicesInTheStory.count - 2, secondStoryNumber < choicesInTheStory.endIndex, secondChoiceButton.isSelected:
           
             storyLabel.text = stories[secondStoryNumber]
