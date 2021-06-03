@@ -22,9 +22,14 @@ class ViewController: UIViewController {
     @IBOutlet weak var secondChoiceButton: UIButton!
     
     @IBAction func chooseAStoryAction(_ sender: UIButton) {
-        
+        if firstChoiceButton.isSelected && sender === firstChoiceButton {
         setUpAStory()
+        }
         
+        if secondChoiceButton.isSelected && sender === secondChoiceButton {
+            setUpAStory()
+        }
+        sender.isSelected.toggle()
     }
     
     override func viewDidLoad() {
@@ -38,13 +43,9 @@ class ViewController: UIViewController {
     
     private func setUpAStory() {
         
-        switch Bool() {
-        
-        case firstChoiceButton.isSelected:
-            
-            storyLabel.text = constant.stories[firstStoryNumber]
-            
-            if firstStoryNumber < constant.storyOptions.endIndex - 1, secondStoryNumber < constant.storyOptions.endIndex {
+        storyLabel.text = firstChoiceButton.isSelected ? constant.stories[firstStoryNumber] : constant.stories[secondStoryNumber]
+      
+        if firstStoryNumber < constant.storyOptions.endIndex - 2, secondStoryNumber < constant.storyOptions.endIndex - 1 {
                 
                 firstStoryNumber = secondStoryNumber + 1
                 secondStoryNumber = firstStoryNumber + 1
@@ -52,43 +53,13 @@ class ViewController: UIViewController {
             
             else {
                 
-                firstStoryNumber = constant.storyOptions.endIndex - 1
-                secondStoryNumber = constant.storyOptions.endIndex
+                firstStoryNumber = constant.storyOptions.endIndex - 2
+                secondStoryNumber = constant.storyOptions.endIndex - 1
             }
             
             firstChoiceButton.setTitle(constant.storyOptions[firstStoryNumber], for: .normal)
             secondChoiceButton.setTitle(constant.storyOptions[secondStoryNumber], for: .normal)
             
-        case secondChoiceButton.isSelected:
-            
-            storyLabel.text = constant.stories[secondStoryNumber]
-            
-            if firstStoryNumber < constant.storyOptions.endIndex - 1, secondStoryNumber < constant.storyOptions.endIndex {
-                
-                firstStoryNumber = secondStoryNumber + 1
-                secondStoryNumber = firstStoryNumber + 1
-                
-            }
-            
-            else {
-                
-                firstStoryNumber = constant.storyOptions.endIndex - 1
-                secondStoryNumber = constant.storyOptions.endIndex
-            }
-            
-            firstChoiceButton.setTitle(constant.storyOptions[firstStoryNumber], for: .normal)
-            secondChoiceButton.setTitle(constant.storyOptions[secondStoryNumber], for: .normal)
-            
-        default:
-          
-            firstStoryNumber = 0
-            secondStoryNumber = 1
-            firstChoiceButton.setTitle(constant.storyOptions[firstStoryNumber], for: .normal)
-            secondChoiceButton.setTitle(constant.storyOptions[secondStoryNumber], for: .normal)
-        }
-        
-        
-        
     }
     
 }
