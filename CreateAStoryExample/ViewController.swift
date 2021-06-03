@@ -24,7 +24,7 @@ class ViewController: UIViewController {
     
     @IBAction private func chooseAStoryAction(_ sender: UIButton) {
         if firstChoiceButton.isSelected && sender === firstChoiceButton {
-            setUpAStory()
+           setUpAStory()
         }
         
         if secondChoiceButton.isSelected && sender === secondChoiceButton {
