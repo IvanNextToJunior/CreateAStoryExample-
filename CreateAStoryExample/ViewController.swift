@@ -15,15 +15,16 @@ class ViewController: UIViewController {
     private var secondStoryNumber = 1
     
     private let constant = Constants()
-    @IBOutlet weak var storyLabel: UILabel!
+   
+    @IBOutlet weak private var storyLabel: UILabel!
     
-    @IBOutlet weak var firstChoiceButton: UIButton!
+    @IBOutlet weak private var firstChoiceButton: UIButton!
     
-    @IBOutlet weak var secondChoiceButton: UIButton!
+    @IBOutlet weak private var secondChoiceButton: UIButton!
     
-    @IBAction func chooseAStoryAction(_ sender: UIButton) {
+    @IBAction private func chooseAStoryAction(_ sender: UIButton) {
         if firstChoiceButton.isSelected && sender === firstChoiceButton {
-        setUpAStory()
+            setUpAStory()
         }
         
         if secondChoiceButton.isSelected && sender === secondChoiceButton {
@@ -44,22 +45,22 @@ class ViewController: UIViewController {
     private func setUpAStory() {
         
         storyLabel.text = firstChoiceButton.isSelected ? constant.stories[firstStoryNumber] : constant.stories[secondStoryNumber]
-      
+        
         if firstStoryNumber < constant.storyOptions.endIndex - 2, secondStoryNumber < constant.storyOptions.endIndex - 1 {
-                
-                firstStoryNumber = secondStoryNumber + 1
-                secondStoryNumber = firstStoryNumber + 1
-            }
             
-            else {
-                
-                firstStoryNumber = constant.storyOptions.endIndex - 2
-                secondStoryNumber = constant.storyOptions.endIndex - 1
-            }
+            firstStoryNumber = secondStoryNumber + 1
+            secondStoryNumber = firstStoryNumber + 1
+        }
+        
+        else {
             
-            firstChoiceButton.setTitle(constant.storyOptions[firstStoryNumber], for: .normal)
-            secondChoiceButton.setTitle(constant.storyOptions[secondStoryNumber], for: .normal)
-            
+            firstStoryNumber = constant.storyOptions.endIndex - 2
+            secondStoryNumber = constant.storyOptions.endIndex - 1
+        }
+        
+        firstChoiceButton.setTitle(constant.storyOptions[firstStoryNumber], for: .normal)
+        secondChoiceButton.setTitle(constant.storyOptions[secondStoryNumber], for: .normal)
+        
     }
     
 }
